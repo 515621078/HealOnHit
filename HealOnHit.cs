@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Xml;
 using TaleWorlds.Core;
 using TaleWorlds.Library;
@@ -6,15 +6,15 @@ using TaleWorlds.MountAndBlade;
 
 namespace HealOnHit
 {
-    public class HealOnHit : MissionBehavior
+    public class HealOnHit : MissionBehaviour
     {
         public static float ConvertRate = 0.2f;
 
-        public override MissionBehaviorType BehaviorType
+        public override MissionBehaviourType BehaviourType
         {
             get
             {
-                return MissionBehaviorType.Other;
+                return MissionBehaviourType.Other;
             }
         }
 
@@ -61,7 +61,7 @@ namespace HealOnHit
             string path;
             try
             {
-                 path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             }
             catch (Exception)
             {
@@ -80,7 +80,7 @@ namespace HealOnHit
                     XmlDocument config = new XmlDocument();
                     config.Load(path);
                     XmlNode rootNode = config.SelectSingleNode("HealOnHit");
-                    XmlNode node =rootNode.SelectSingleNode("ConvertRate");
+                    XmlNode node = rootNode.SelectSingleNode("ConvertRate");
                     float rate = float.Parse(node.InnerText);
                     if (rate >= 0)
                     {
@@ -101,10 +101,10 @@ namespace HealOnHit
             }
         }
 
-        public override void OnMissionBehaviorInitialize(Mission mission)
+        public override void OnMissionBehaviourInitialize(Mission mission)
         {
-            base.OnMissionBehaviorInitialize(mission);
-            mission.AddMissionBehavior(new HealOnHit());
+            base.OnMissionBehaviourInitialize(mission);
+            mission.AddMissionBehaviour(new HealOnHit());
         }
     }
 }
